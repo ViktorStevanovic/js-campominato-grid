@@ -20,26 +20,27 @@ buttonElement.append('Play')
 
 // Main content
 const gameSection = document.getElementById('game-section')
-console.log(gameSection)
+const wrapper = gameSection.classList.add('wrapper')
+
 
 buttonElement.addEventListener('click',function(){
-    gameSection.classList.add('wrapper')
-
-    for(i = 1; i <= 100; i++){
-        const currentBox = createBox()
-        gameSection.appendChild(currentBox)
-        currentBox.append(i)
-
-        currentBox.addEventListener('click', function(){
-            currentBox.classList.toggle('clicked-box')
-            console.log(currentBox.innerHTML)
-        })
-    }
-})
+    gameSection.innerHTML = '';
+    createBox();
+});
 // chiedere a Riccardo perchè se su console log scrivo i mi esce il numero complessivo dei box
 
 function createBox(){
-    const divElement = document.createElement('div')
-    divElement.classList.add('box')
-    return divElement
-}
+
+    for(let i = 1; i <= 100; i++){
+        const divElement = document.createElement('div')
+        divElement.classList.add('box')
+        divElement.append(i)
+
+        divElement.addEventListener('click', function(){
+            divElement.classList.toggle('clicked-box')
+            console.log(divElement.innerHTML)
+        })
+        gameSection.appendChild(divElement)
+
+}}
+    
